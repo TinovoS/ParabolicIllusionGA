@@ -14,4 +14,4 @@ Idea             |  Realization
 
 The animation below demonstrates the final project, showing the combined effects of the colored spirals.
 
-<video src="ShortColoredVideo.mp4" width="320" height="240" controls></video>
+![til](ColoredGif.gif)
