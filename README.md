@@ -14,4 +14,4 @@ Idea             |  Realization
 
 The animation below demonstrates the final project, showing the combined effects of the colored spirals.
 
-![til](https://github.com/TinovoS/ParabolicIllusionGA/blob/main/ShortColoredVideo.mp4)
+![til](ColoredGif.gif)
