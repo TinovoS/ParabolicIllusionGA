@@ -1,0 +1,115 @@
+ang_origin 25 15
+ang_drawsystem_a
+
+%how large is one side of the triangle
+number side 3
+%how dense spirals should be
+number steps 150
+%shrink factor of the interpolations
+number shrink 0.02
+%3th point height of the triangle
+expression height { side * sqrt(3) /2}
+number g 0
+
+procedure draw_spiral { T0Ax T0Ay T0Bx T0By T0Cx T0Cy steps shrink  height g } 
+{
+
+if_then_else { g==1 } 
+{
+number k 1
+}
+{
+number k 0
+}
+
+while { k < 2 }
+{
+ expression T0Cy { T0Cy + 2*height*k }
+
+number Ax T0Ax
+number Ay T0Ay
+number Bx T0Bx
+number By T0By
+number Cx T0Cx
+number Cy T0Cy
+
+ang_point P0A T0Ax T0Ay
+ang_point P0B T0Bx T0By
+ang_point P0C T0Cx T0Cy
+drawsegment P0A P0B
+drawsegment P0B P0C
+drawsegment P0C P0A
+
+number i 0
+
+while {i < steps}
+{
+ang_point A Ax Ay
+ang_point B Bx By
+ang_point C Cx Cy
+
+expression newAx { Ax * (1 - shrink) + Bx * shrink }
+expression newAy { Ay * (1 - shrink) + By * shrink }
+
+expression newBx { Bx * (1 - shrink) + Cx * shrink }
+expression newBy { By * (1 - shrink) + Cy * shrink }
+
+expression newCx { Cx * (1 - shrink) + Ax * shrink }
+expression newCy { Cy * (1 - shrink) + Ay * shrink }
+
+ang_point Ap newAx newAy
+ang_point Bp newBx newBy
+ang_point Cp newCx newCy
+
+drawsegment Ap Bp
+drawsegment Bp Cp
+drawsegment Cp Ap
+
+number Ax newAx
+number Ay newAy
+number Bx newBx
+number By newBy
+number Cx newCx
+number Cy newCy
+
+expression i { i + 1 }
+}
+expression k { k + 1}
+}
+}
+procedure check_b4_drawing { T0Ax T0Ay T0Bx T0By T0Cx T0Cy steps shrink height }
+{
+
+if_then_else { T0Ay == 0 }
+{
+number g 1
+call draw_spiral { T0Ax T0Ay T0Bx T0By T0Cx T0Cy steps shrink height g }
+}
+{
+number g 0
+call draw_spiral { T0Ax T0Ay T0Bx T0By T0Cx T0Cy steps shrink height g }
+}
+}
+
+number k 0
+
+while { k < 3 }
+{
+
+number j 0
+
+while {j+k < 3}
+{
+expression T0Ax { 0 + side*k/2 + j*side }
+expression T0Ay { 0 + k*height }
+expression T0Bx { side + side*k/2 + j*side }
+expression T0By { 0 + k*height }
+expression T0Cx { side/2 + side*k/2 + j*side }
+expression T0Cy { -height + k*height }
+
+call check_b4_drawing { T0Ax T0Ay T0Bx T0By T0Cx T0Cy steps shrink height }
+
+expression j { j + 1 }
+}
+expression k { k + 1 }
+}

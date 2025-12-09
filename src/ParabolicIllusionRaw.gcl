@@ -1,0 +1,203 @@
+ang_origin 25 15
+ang_drawsystem_a
+
+number steps 200
+number shrink 0.02
+expression height { 3 * sqrt(3) /2}
+
+%BOTTOM THREE
+number j 0
+
+while {j < 3}
+{
+number i 0
+
+expression T0Ax { 0 + j*3 }
+expression T0Ay { 0 }
+expression T0Bx { 3 + j*3 }
+expression T0By { 0 }
+expression T0Cx { 1.5 + j*3 }
+expression T0Cy { height }
+    
+number Ax T0Ax 
+number Ay T0Ay
+number Bx T0Bx
+number By T0By
+number Cx T0Cx
+number Cy T0Cy
+
+ang_point P0A T0Ax T0Ay 
+ang_point P0B T0Bx T0By
+ang_point P0C T0Cx T0Cy 
+drawsegment P0A P0B 
+drawsegment P0B P0C 
+drawsegment P0C P0A
+
+while {i < steps}
+{
+ang_point A Ax Ay
+ang_point B Bx By
+ang_point C Cx Cy
+
+expression newAx { Ax * (1 - shrink) + Bx * shrink }
+expression newAy { Ay * (1 - shrink) + By * shrink }
+
+expression newBx { Bx * (1 - shrink) + Cx * shrink }
+expression newBy { By * (1 - shrink) + Cy * shrink }
+
+expression newCx { Cx * (1 - shrink) + Ax * shrink }
+expression newCy { Cy * (1 - shrink) + Ay * shrink }
+
+ang_point Ap newAx newAy
+ang_point Bp newBx newBy
+ang_point Cp newCx newCy
+
+drawsegment Ap Bp
+drawsegment Bp Cp
+drawsegment Cp Ap
+
+number Ax newAx
+number Ay newAy
+number Bx newBx
+number By newBy
+number Cx newCx
+number Cy newCy
+
+expression i { i + 1 }
+}
+expression j { j + 1 }
+}
+
+%UP AND DOWN MIDDLE TWO
+number k 0
+
+while {k < 2}
+{
+number j 0
+
+expression T0Ax { 1.5 + k*3 }
+expression T0Ay { height  }
+expression T0Bx { 4.5 + k*3 }
+expression T0By { height  }
+
+while {j < 2}
+{
+number i 0
+
+expression T0Cx { 3 + k*3  }
+expression T0Cy {j*2*height  }
+    
+number Ax T0Ax
+number Ay T0Ay
+number Bx T0Bx
+number By T0By
+number Cx T0Cx
+number Cy T0Cy
+
+ang_point P0A T0Ax T0Ay 
+ang_point P0B T0Bx T0By 
+ang_point P0C T0Cx T0Cy 
+drawsegment P0A P0B 
+drawsegment P0B P0C 
+drawsegment P0C P0A
+
+while {i < steps}
+{
+ang_point A Ax Ay
+ang_point B Bx By
+ang_point C Cx Cy
+        
+expression newAx { Ax * (1 - shrink) + Bx * shrink }
+expression newAy { Ay * (1 - shrink) + By * shrink }
+
+expression newBx { Bx * (1 - shrink) + Cx * shrink }
+expression newBy { By * (1 - shrink) + Cy * shrink }
+
+expression newCx { Cx * (1 - shrink) + Ax * shrink }
+expression newCy { Cy * (1 - shrink) + Ay * shrink }
+
+ang_point Ap newAx newAy
+ang_point Bp newBx newBy
+ang_point Cp newCx newCy
+
+drawsegment Ap Bp
+drawsegment Bp Cp
+drawsegment Cp Ap
+
+number Ax newAx
+number Ay newAy
+number Bx newBx
+number By newBy
+number Cx newCx
+number Cy newCy
+
+expression i { i + 1 }
+}
+expression j { j + 1 }
+}
+expression k { k + 1 }
+}
+
+%UP AND DOWN  --- TOP 
+number j 0
+    
+while {j < 2}
+{
+number i 0
+
+expression T0Ax { 3 }
+expression T0Ay { height*2  }
+expression T0Bx { 6 }
+expression T0By { height*2  }
+expression T0Cx { 4.5 }
+expression T0Cy {j*2*height   + height}
+    
+number Ax T0Ax
+number Ay T0Ay
+number Bx T0Bx
+number By T0By
+number Cx T0Cx
+number Cy T0Cy
+
+ang_point P0A T0Ax T0Ay 
+ang_point P0B T0Bx T0By 
+ang_point P0C T0Cx T0Cy 
+drawsegment P0A P0B 
+drawsegment P0B P0C 
+drawsegment P0C P0A
+
+while {i < steps}
+{
+ang_point A Ax Ay
+ang_point B Bx By
+ang_point C Cx Cy
+        
+expression newAx { Ax * (1 - shrink) + Bx * shrink }
+expression newAy { Ay * (1 - shrink) + By * shrink }
+
+expression newBx { Bx * (1 - shrink) + Cx * shrink }
+expression newBy { By * (1 - shrink) + Cy * shrink }
+
+expression newCx { Cx * (1 - shrink) + Ax * shrink }
+expression newCy { Cy * (1 - shrink) + Ay * shrink }
+
+ang_point Ap newAx newAy
+ang_point Bp newBx newBy
+ang_point Cp newCx newCy
+
+drawsegment Ap Bp
+drawsegment Bp Cp
+drawsegment Cp Ap
+
+number Ax newAx
+number Ay newAy
+number Bx newBx
+number By newBy
+number Cx newCx
+number Cy newCy
+
+expression i { i + 1 }
+}    
+expression j { j + 1 }
+}
+
