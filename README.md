@@ -1,6 +1,6 @@
 # ParabolicIllusionGA
-Project for Computational Geometry involving creating illusion with basic principe of linear interpolation and stacking triangles.
 
+Project for Computational Geometry involving creating illusion with basic principe of linear interpolation and stacking triangles.
 
 ## Realized Project Output
 
@@ -15,3 +15,11 @@ Idea             |  Realization
 The animation below demonstrates the final project, showing the combined effects of the colored spirals.
 
 ![til](ColoredGif.gif)
+
+## Parameters 
+
+You can adjust your parameters in the code if you want to have different kind of illusions (more or less dense etc)...
+
+- **side:**  from point A to Point B how large is one of the side of the triangles.
+- **steps:** How many times will interpolation be used, in common phrase is how many times will triangles be spiralling.
+- **shrink:** interpolation factor of the formula.
