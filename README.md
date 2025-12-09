@@ -23,3 +23,7 @@ You can adjust your parameters in the code if you want to have different kind of
 - **side:**  from point A to Point B how large is one of the side of the triangles.
 - **steps:** How many times will interpolation be used, in common phrase is how many times will triangles be spiralling.
 - **shrink:** interpolation factor of the formula.
+
+## Author
+
+- **authors:** Nikola Labus
