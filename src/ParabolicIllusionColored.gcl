@@ -4,12 +4,12 @@ ang_drawsystem_a
 %how large is one side of the triangle
 number side 3
 %how dense spirals should be
-number steps 150
+number steps 60
 %3th point height of the triangle
 expression height { side * sqrt(3) /2}
 
 animation_frames 100 100
-point T 0 0 4 4
+point T 0 0 1 1
 number t 0
 getx t T 
 expression anim_shrink { 0.005 * (1 - t) + 0.05 * t }
@@ -128,4 +128,5 @@ expression j { j + 1 }
 }
 expression k { k + 1 }
 }
+
 

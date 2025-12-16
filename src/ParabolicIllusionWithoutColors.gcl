@@ -4,12 +4,15 @@ ang_drawsystem_a
 %how large is one side of the triangle
 number side 3
 %how dense spirals should be
-number steps 150
-%shrink factor of the interpolations
-number shrink 0.02
+number steps 60
 %3th point height of the triangle
 expression height { side * sqrt(3) /2}
-number g 0
+
+animation_frames 100 100
+point T 0 0 1 1
+number t 0
+getx t T 
+expression anim_shrink { 0.005 * (1 - t) + 0.05 * t }
 
 procedure draw_spiral { T0Ax T0Ay T0Bx T0By T0Cx T0Cy steps shrink  height g } 
 {
@@ -61,6 +64,8 @@ ang_point Ap newAx newAy
 ang_point Bp newBx newBy
 ang_point Cp newCx newCy
 
+
+
 drawsegment Ap Bp
 drawsegment Bp Cp
 drawsegment Cp Ap
@@ -107,9 +112,11 @@ expression T0By { 0 + k*height }
 expression T0Cx { side/2 + side*k/2 + j*side }
 expression T0Cy { -height + k*height }
 
-call check_b4_drawing { T0Ax T0Ay T0Bx T0By T0Cx T0Cy steps shrink height }
+call check_b4_drawing { T0Ax T0Ay T0Bx T0By T0Cx T0Cy steps anim_shrink height }
 
 expression j { j + 1 }
 }
 expression k { k + 1 }
 }
+
+
